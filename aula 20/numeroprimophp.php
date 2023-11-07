@@ -1,12 +1,22 @@
 <?php
+    function numPrimo($posicao){
+        $primos = array(2);
 
-
-    $lista = [2,3,5,7,11];
-
-    function numPrimo($p){
-        $sequencia = array();
-        $numeroPrimo = 2;
-
+        $n = 3;
+        while(count($primos) < $posicao){
+            $e_primo = true;
+            foreach($primos as $primo){
+                if($n%$primo == 0){
+                    $e_primo = false;
+                }
+            }
+            if($e_primo){
+                $primos[] = $n;
+            }
+            $n++;
+        }
+        return $primos[$posicao - 1];
     }
-    echo numPrimo(10);
+
+    echo numPrimo($_GET["posicao"]);
 ?>
